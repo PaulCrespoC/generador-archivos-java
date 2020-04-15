@@ -9,24 +9,28 @@ function createJavaFile(description) {
     if (!fs.existsSync('./src/'  + folderName)) {
         fs.mkdirSync('./src/' + folderName);
         fs.writeFileSync('./src/' + folderName + '/Main.java', getJavaCode(folderName, description));
-
     }
 }
 
 function getJavaCode(folderName = '', description = '') {
     return 'package '+folderName+';\n' +
         '\n' +
-        '\n' +
         '/**\n' +
         ' * Description: '+description+'\n' +
+        ' * \n' +
         ' * @author paulc\n' +
         ' *\n' +
         ' */\n' +
         'public class Main {\n' +
-        'public static void main(String[] args) {\n' +
+        '\t\n' +
+        '\tpublic static void main(String[] args) {\n' +
         '\t\tnew Main();\n' +
         '\t}\n' +
-        '}\n';
+        '\t\n' +
+        '\tpublic Main() {\n' +
+        '\t\tSystem.out.println("'+folderName+'");\n' +
+        '\t}\n' +
+        '}';
 }
 
 function getName(description) {
